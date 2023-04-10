@@ -1,0 +1,45 @@
+.tipsMainTextContainer{
+  line-height: 1.7rem;
+
+  .tipContainer{
+    position: relative;
+    margin: auto 1rem;
+    font-weight: 700;
+    font-style: italic;
+    color: rgb(255, 55, 0);
+    cursor: help;
+  }
+  .tip{
+    position: absolute;
+    top: -270%;
+    left: 50%;
+    min-width: 100%;
+    background-color: red;
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+
+    text-align: center;
+
+
+    &::before{
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 2rem;
+      height: 2rem;
+      background-color: red;
+      z-index: -1;
+    }
+
+    &.active{
+      visibility: visible;
+      opacity: 1;
+      transition: .3s;
+    }
+  }
+}

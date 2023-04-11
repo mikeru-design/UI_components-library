@@ -1,6 +1,5 @@
 
-.infoBtnMainContainer{
-  padding: 20px 0;
+.infoTabsContainer{
 
   .btnsContainer{
     margin: 0;
@@ -32,8 +31,10 @@
   }
 
   .infoContainer{
-    margin: 0;
+    margin: 30px auto;
+    padding: 20px;
     background-color: rgb(245, 245, 245);
+    border-radius: 5px;
 
     .info{
       display: none;
@@ -45,8 +46,10 @@
       h3{
         position: relative;
         width: 100%;
-        margin-left: 10px;
         margin-bottom: 20px;
+        color: grey;
+        text-transform: uppercase;
+        letter-spacing: 1px;
 
         &::before{
           content: "";

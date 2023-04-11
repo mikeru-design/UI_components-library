@@ -1,11 +1,13 @@
 import './assets/scss/main.scss';
 import Tip from './assets/js/tips';
 import Dropdown from './assets/js/dropDown';
-import InfoBtn from './assets/js/infoBtn';
+import InfoTabs from './assets/js/infoTabs';
+import PopUp from './assets/js/popUp';
 
 const tipContainers = document.querySelectorAll('.tipContainer');
 const dropDownContainers = document.querySelectorAll('.dropDownContainer');
-const infoBtnMainContainers = document.querySelectorAll('.infoBtnMainContainer');
+const infoTabsContainers = document.querySelectorAll('.infoTabsContainer');
+const popUpContainers = document.querySelectorAll('.popUpContainer');
 
 for (let tipContainer of tipContainers) {
   tipContainer = new Tip(tipContainer);
@@ -17,10 +19,17 @@ for (let dropDownContainer of dropDownContainers) {
   dropDownContainer.initShowOnlyOne();
 };
 
-infoBtnMainContainers.forEach( infoBtnMainContainer => {
-  infoBtnMainContainer = new InfoBtn(infoBtnMainContainer);
-  infoBtnMainContainer.initBtn();
+infoTabsContainers.forEach( infoTabsContainer => {
+  infoTabsContainer = new InfoTabs(infoTabsContainer);
+  infoTabsContainer.init();
 })
+
+popUpContainers.forEach( popUpContainer => {
+  popUpContainer = new PopUp(popUpContainer);
+  popUpContainer.init();
+})
+
+
 
 
 

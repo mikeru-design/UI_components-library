@@ -7,11 +7,12 @@ export default class PopUp{
     this.popUpForm = container.querySelector('.popUpForm');
   }
 
-  init(){
+  initPopUp(){
     this.popUpForm.addEventListener('submit', (e) => {
       e.preventDefault();
       this.createWindow();
     })
+
     document.addEventListener('click', e => {
       this.closeWindow(e);
     })
@@ -19,18 +20,43 @@ export default class PopUp{
 
   createWindow(){
     const popUpWindow = document.querySelector('.popUpWindow');
-    if ( !popUpWindow && this.popUpInput.value ){
-      const popUpWindow = document.createElement('div');
-      popUpWindow.classList.add('popUpWindow');
-      popUpWindow.textContent = this.popUpInput.value;
-      this.container.appendChild(popUpWindow);
-      this.popUpInput.value = '';
+    if ( !popUpWindow ){
+
+      let popUpMsg = '';
+
+      if ( this.popUpInput ){
+        if ( this.popUpInput.value ){
+          popUpMsg = this.popUpInput.value
+          this.popUpInput.value = '';
+        } else {
+          popUpMsg = 'Please, write message in the input to show in popUpWindow'
+        }
+      } else {
+        const popUpValue = this.popUpForm.getAttribute('data-popUpValue');
+        popUpMsg = popUpValue;
+      }
+
+      if( popUpMsg ){
+        const popUpWindow = document.createElement('div');
+        popUpWindow.classList.add('popUpWindow');
+
+        const popUpWindowClose = document.createElement('div');
+        popUpWindowClose.classList.add('popUpWindowClose');
+
+        popUpWindow.textContent = popUpMsg;
+        popUpWindow.appendChild(popUpWindowClose);
+        this.container.appendChild(popUpWindow);
+
+        setTimeout( () => { popUpWindow.remove() }, 5000 );
+      }
+
+
     }
   }
 
   closeWindow(e){
     const popUpWindow = document.querySelector('.popUpWindow');
-    if ( popUpWindow && !e.target.classList.contains('popUpWindow') ){
+    if ( popUpWindow && e.target.classList.contains('popUpWindowClose')){
       popUpWindow.remove();
     }
   }

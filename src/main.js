@@ -26,7 +26,7 @@ infoTabsContainers.forEach( infoTabsContainer => {
 
 popUpContainers.forEach( popUpContainer => {
   popUpContainer = new PopUp(popUpContainer);
-  popUpContainer.init();
+  popUpContainer.initPopUp();
 })
 
 
